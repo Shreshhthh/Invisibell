@@ -33,12 +33,12 @@ const U = () => {
       await axios.post<ApiResponse>(`/api/send-message`, content);
       toast({
         title: "Message sent successfully",
-        variant: "destructive",
+        variant: "default",
       });
     } catch (error) {
       console.log(error, "failed to send message");
       toast({
-        title: "error while sending message",
+        title: "User is not accepting messages",
         variant: "destructive",
       });
     }
@@ -49,13 +49,13 @@ const U = () => {
       <h1 className="text-4xl font-bold mb-6 text-center">
         Public Profile Link
       </h1>
-      <p className="text-1xl font-bold">
+      <p className="text-1xl font-bold mt-10 pl-2">
         Send Anonymous Message to @{username}
       </p>
       <div className="form-section flex flex-col text-center items-center">
-        <input
-          className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black w-full "
-          placeholder="enter your message here"
+        <textarea
+          className="mt-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black w-full h-52 pl-3 text-wrap pb-[9.5rem] pt-2 no-scrollbar"
+          placeholder="Enter your secret message here!"
           name="content"
           onChange={(e) => setContent({ ...content, content: e.target.value })}
           value={content.content}

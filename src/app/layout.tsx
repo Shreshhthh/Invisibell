@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <AuthProvider>
-        <body className={inter.className}>
+        <body className={`${inter.className} bg-[#80b0a6]`}>
           {children}
           <Toaster />
         </body>

@@ -60,7 +60,7 @@ const page = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800">
+    <div className="flex justify-center items-center min-h-screen bg-[#80b0a6]">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
@@ -94,7 +94,10 @@ const page = () => {
                 </FormItem>
               )}
             />
-            <Button className="w-full" type="submit">
+            <Button
+              className="w-full bg-[#275248] hover:bg-[#436b5a]"
+              type="submit"
+            >
               Sign In
             </Button>
           </form>

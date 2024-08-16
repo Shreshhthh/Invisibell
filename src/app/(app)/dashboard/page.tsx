@@ -15,6 +15,7 @@ import { useSession } from "next-auth/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { acceptMessageSchema } from "@/schemas/acceptMessageSchema";
+import { tree } from "next/dist/build/templates/app-page";
 
 function UserDashboard() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -40,7 +41,7 @@ function UserDashboard() {
     setIsSwitchLoading(true);
     try {
       const response = await axios.get<ApiResponse>("/api/accept-messages");
-      setValue("acceptMessages", response.data.isAcceptingMessages);
+      setValue("acceptMessages", response.data.isAcceptingMessage);
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
       toast({
@@ -101,7 +102,9 @@ function UserDashboard() {
       });
       setValue("acceptMessages", !acceptMessages);
       toast({
-        title: response.data.message,
+        title: `${response.data.message} to ${
+          acceptMessages === true ? "Off" : "On"
+        }`,
         variant: "default",
       });
     } catch (error) {
@@ -160,6 +163,11 @@ function UserDashboard() {
         <span className="ml-2">
           Accept Messages: {acceptMessages ? "On" : "Off"}
         </span>
+        <p className="mt-4 pl-1 font-semibold text-black text-sm">
+          {acceptMessages === true
+            ? "Accepting messages"
+            : "Not Accepting Messages"}
+        </p>
       </div>
       <Separator />
 
